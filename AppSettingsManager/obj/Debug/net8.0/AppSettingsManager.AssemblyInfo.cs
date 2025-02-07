@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppSettingsManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+512973296179e52fe8bddb7e9b096afebdd2dfbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppSettingsManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppSettingsManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
