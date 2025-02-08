@@ -1,5 +1,82 @@
 ﻿@inject IConfiguration config;
 
+<div>
+    <h2>Default Flow/Hierarchy (in order)</h2>
+    <ol>
+        <li>Command Line e.g. dotnet run Twilio:PhoneNumber="Phone number from commandline"</li>
+        <li>Environment Variables</li>
+        <li>User Secrets</li>
+        <li>App Settings[Environment Specific] e.g. appsetting.develop.json</li>
+        <li>App Setting[appsetting.json]</li>
+    </ol>
+    <hr />
+    <h2>Overriding the default flow</h2>
+    <p>We can override the default flow by setting it in Program.cs explicitly. The last part in the builder will be the highest priority.</p>
+    <code>
+        <pre>
+        public static IHostBuilder CreateHostBuilder(string[] args) => 
+            Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, builder) => {
+                builder.Sources.Clear();
+                builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                builder.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment}.json", optional: true, reloadOnChange: true);
+                if (hostingContext.HostingEnvironment.IsDevelopment())
+                {
+                    builder.AddUserSecrets<Program>();
+                }
+                builder.AddEnvironmentVariables();
+                builder.AddCommandLine(args);
+            })
+
+        </pre>
+    </code>
+    <hr/>
+    <h2>Adding custom appsetting json</h2>
+    <code>
+        <pre>
+        public static IHostBuilder CreateHostBuilder(string[] args) => 
+            Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, builder) => {
+                builder.Sources.Clear();
+                builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                builder.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment}.json", optional: true, reloadOnChange: true);
+                <b>builder.AddJsonFile("customJson.json", optional: true, reloadOnChange: true);</b>
+                if (hostingContext.HostingEnvironment.IsDevelopment())
+                {
+                    builder.AddUserSecrets<Program>();
+                }
+                builder.AddEnvironmentVariables();
+                builder.AddCommandLine(args);
+            })
+
+        </pre>
+    </code>
+    <hr />
+    <h2>Azure Key Vault</h2>
+    <ul>
+        <li>Key Vault is best for all environments other than Development</li>
+        <li>Key Vault securs, sensitive data</li>
+        <li>Key never leaves the Vault</li>
+        <li>Compliance friendly</li>
+        <li>Prebuilt configuration for .NET</li>
+        <li>Microsoft, Amazon, Google etc. has the key vault feature</li>
+    </ul>
+    <div>
+        <h5>Authentication Options</h5>
+        <ul>
+            <li><b>OAuth ClientID And Secret</b></li>
+            <li><b>Certificates</b> - better option if application is hosted on premises</li>
+            <li><b>Managed Identity</b> - if hosted in Azure</li>
+        </ul>
+        <section>
+            <h5>Due to Azure subscription limitation,
+                <a href="https://www.udemy.com/course/appsettings-and-secrets-in-aspnet-core/learn/lecture/22812657#overview">refer to Section 5 of Udemy course when creating azure key vault</a>
+            </h5>
+        </section>
+        <br/>
+    </div>
+</div>
+
 <div class="row mb-2">
     <div class="col-md-6">
         <div class="card flex-md-row mb-4 box-shadow h-md-250">

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OJR9/Qdk8+0=",
+  "dgSpecHash": "PzGXyNbiuR4=",
   "success": true,
-  "projectFilePath": "D:\\Study\\Appsettings\\AppSettingsManager\\AppSettingsManager\\AppSettingsManager.csproj",
+  "projectFilePath": "C:\\Users\\steph\\Desktop\\Practice\\Udemy\\Managing-AppSettings-and-Secrets-in-ASP.NET-Core\\AppSettingsManager\\AppSettingsManager.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

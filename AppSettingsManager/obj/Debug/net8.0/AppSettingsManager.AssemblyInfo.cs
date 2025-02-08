@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("3a69aef3-8d9f-4e05-a6cd-3aa50b461164")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppSettingsManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+512973296179e52fe8bddb7e9b096afebdd2dfbc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9299ab4d9d4aaf72c5f8c158d5c1f82171fc518")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppSettingsManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppSettingsManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
